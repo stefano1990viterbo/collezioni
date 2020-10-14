@@ -9,15 +9,12 @@ public class Collezione {
 
 	public void aggiungiCliente(Cliente c) {
 		cliente.add(c);
-
 	}
 
 	public void serviPrimoCliente() {
 		controlloCliente();
-		if (controlloCliente().equals(true)) {
-			chiamaCliente();
-		} else
-			System.out.println("non c'è nessun cliente");
+		if (controlloCliente().equals(true)) 
+			chiamaCliente(); 		
 	}
 
 	public void spostaCliente(int i) {
@@ -31,10 +28,8 @@ public class Collezione {
 	}
 
 	public void stampaListaClienti() {
-		for (int i = 0; i < cliente.size(); i++) {
-
+		for (int i = 0; i < cliente.size(); i++) 
 			System.out.println(cliente.get(i) + " " + i);
-		}
 	}
 
 	public Boolean controlloCliente() {
@@ -42,6 +37,7 @@ public class Collezione {
 			clientePresente = true;
 		} else if (cliente.size() == 0) {
 			clientePresente = false;
+			System.out.println("non c'è nessun cliente");
 		}
 		return clientePresente;
 	}
