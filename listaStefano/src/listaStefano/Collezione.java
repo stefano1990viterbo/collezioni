@@ -1,11 +1,11 @@
 package listaStefano;
 
-
 import java.util.ArrayList;
 
 public class Collezione {
 
 	private ArrayList<Cliente> cliente = new ArrayList<Cliente>();
+	private boolean clientePresente;
 
 	public void aggiungiCliente(Cliente c) {
 		cliente.add(c);
@@ -13,28 +13,11 @@ public class Collezione {
 	}
 
 	public void serviPrimoCliente() {
-
-		if (cliente.size() > 0) {
-
-			for (int i = 0; i < cliente.size(); i++) {
-
-				if (!cliente.equals(null)) {
-					System.out.println(cliente.get(i) + " questo è il primo cliente in coda");
-//				spostaCliente(i);
-					rimuoviClienteServito(i);
-
-					break;
-				}
-
-				else
-					System.out.println("è successo del bordello");
-			}
-		} else if (cliente.size() == 0) {
-			System.out.println("non c'è nessun cliente");
-
+		controlloCliente();
+		if (controlloCliente().equals(true)) {
+			chiamaCliente();
 		} else
-			System.out.println("è successo del bordello");
-
+			System.out.println("non c'è nessun cliente");
 	}
 
 	public void spostaCliente(int i) {
@@ -51,7 +34,25 @@ public class Collezione {
 		for (int i = 0; i < cliente.size(); i++) {
 
 			System.out.println(cliente.get(i) + " " + i);
+		}
+	}
 
+	public Boolean controlloCliente() {
+		if (cliente.size() > 0) {
+			clientePresente = true;
+		} else if (cliente.size() == 0) {
+			clientePresente = false;
+		}
+		return clientePresente;
+	}
+
+	public void chiamaCliente() {
+		for (int i = 0; i < cliente.size(); i++) {
+			if (!cliente.equals(null)) {
+				System.out.println(cliente.get(i) + " questo è il primo cliente in coda");
+				rimuoviClienteServito(i);
+				break;
+			}
 		}
 	}
 
