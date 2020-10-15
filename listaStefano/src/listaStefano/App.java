@@ -35,8 +35,8 @@ public class App {
 		c.serviPrimoCliente();
 		c.serviPrimoCliente();
 		c.serviPrimoCliente();
-		c.aggiungiCliente(cliente4);
-		c.aggiungiCliente(cliente5);
+		
+		c.chiamaCliente();
 	}
 
 }

@@ -4,51 +4,57 @@ import java.util.ArrayList;
 
 public class Collezione {
 
-	private ArrayList<Cliente> cliente = new ArrayList<Cliente>();
-	private boolean clientePresente;
+	private ArrayList<Cliente> codaClienti = new ArrayList<Cliente>();
 
 	public void aggiungiCliente(Cliente c) {
-		cliente.add(c);
+		codaClienti.add(c);
 	}
 
 	public void serviPrimoCliente() {
-		controlloCliente();
-		if (controlloCliente().equals(true)) 
-			chiamaCliente(); 		
+		sonoPresentiClientiNellaCoda();
+		if (sonoPresentiClientiNellaCoda().equals(true)) {
+			chiamaCliente(); 		}
 	}
 
-	public void spostaCliente(int i) {
-		int ultimoPosto = cliente.size() - 1;
-		cliente.set(ultimoPosto, cliente.get(i));
-	}
+//	public void spostaCliente(int i) {
+//		int ultimoPosto = codaClienti.size() - 1;
+//		for(int k=0;k<codaClienti.size();k++) {
+//		
+//		
+//			
+//			
+//		}
+//		codaClienti.set(ultimoPosto, codaClienti.get(i));
+//	}
 
 	public void rimuoviClienteServito(int i) {
-		cliente.remove(i);
-
+		codaClienti.remove(i);
 	}
 
 	public void stampaListaClienti() {
-		for (int i = 0; i < cliente.size(); i++) 
-			System.out.println(cliente.get(i) + " " + i);
+		for (int i = 0; i < codaClienti.size(); i++) {
+			System.out.println(codaClienti.get(i) + " " + i);}
 	}
 
-	public Boolean controlloCliente() {
-		if (cliente.size() > 0) {
-			clientePresente = true;
-		} else if (cliente.size() == 0) {
-			clientePresente = false;
+	public Boolean sonoPresentiClientiNellaCoda() {
+		if (codaClienti.isEmpty()) {
 			System.out.println("non c'è nessun cliente");
-		}
-		return clientePresente;
+			return false;
+		} 
+			return true;
 	}
-
+	
 	public void chiamaCliente() {
-		for (int i = 0; i < cliente.size(); i++) {
-			if (!cliente.equals(null)) {
-				System.out.println(cliente.get(i) + " questo è il primo cliente in coda");
-				rimuoviClienteServito(i);
+		int clienteDaRimuovere=0;
+		for (int i = 0; i < codaClienti.size(); i++) {
+			if (codaClienti!=null) {
+				System.out.println(codaClienti.get(i) + " questo è il primo cliente in coda");				
+				clienteDaRimuovere=i;			
 				break;
 			}
+		}
+		if(!codaClienti.isEmpty()) {
+			rimuoviClienteServito(clienteDaRimuovere);
 		}
 	}
 
